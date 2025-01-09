@@ -1,0 +1,30 @@
+.home {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .user-carousel {
+    margin: 20px 0;
+  }
+  
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .carousel-item {
+    min-width: 150px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .carousel-item img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }  
