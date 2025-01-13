@@ -10,6 +10,7 @@ const UserDashboard = () => {
     genre: "",
     review: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
   const token = localStorage.getItem("authToken"); // Assuming auth token is stored here
 
   // Fetch user-specific books
@@ -34,9 +35,22 @@ const UserDashboard = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // Validate review input for at least two sentences
+  const validateReview = (review) => {
+    const sentenceCount = review.split(/[.!?]/).filter((sentence) => sentence.trim().length > 0).length;
+    return sentenceCount >= 2;
+  };
+
   // Handle form submission to add a new book
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(""); // Reset error message
+
+    if (!validateReview(formData.review)) {
+      setErrorMessage("The review must contain at least 2 sentences.");
+      return;
+    }
+
     try {
       const response = await axios.post("/api/books", formData, {
         headers: { Authorization: `Bearer ${token}` },
@@ -63,6 +77,7 @@ const UserDashboard = () => {
       </div>
 
       <h2>Add a New Book</h2>
+      {errorMessage && <p className="error-message" style={{ color: "red" }}>{errorMessage}</p>}
       <form onSubmit={handleFormSubmit}>
         <label>
           Title:
@@ -109,6 +124,7 @@ const UserDashboard = () => {
             name="review"
             value={formData.review}
             onChange={handleInputChange}
+            required
           ></textarea>
         </label>
         <button type="submit">Add Book</button>
