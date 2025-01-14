@@ -1,6 +1,11 @@
+// Dependency imports + css
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./homepage.css";
+
+// Components
+import CountdownTimer from "../../components/yearlyTimer";
+import Leaderboard from "../../components/leaderBoard/LeaderBoard";
 
 function Homepage() {
   const [users, setUsers] = useState([]);
@@ -8,7 +13,7 @@ function Homepage() {
   useEffect(() => {
     // Fetch users and their books from the backend
     axios
-      .get("/api/auth/users") //Endpoint to connect to backend
+      .get("/api/auth/users")
       .then((response) => setUsers(response.data))
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
@@ -24,6 +29,8 @@ function Homepage() {
       <h1 className="title">Fellowship of the Pages</h1>
       <p>Track your reading progress and compete with friends!</p>
 
+      <CountdownTimer />
+
       <div className="competitors">
         <div className="competitor">
           <img
@@ -32,15 +39,6 @@ function Homepage() {
             className="competitor-image"
           />
           <h2 className="competitor-name">Justin Fanton</h2>
-          <div className="carousel">
-            {user1.books.map((book) => (
-              <div key={book._id} className="carousel-item">
-                <img src={book.bookImageUrl} alt={book.title} />
-                <p>{book.title}</p>
-                <p>{book.author}</p>
-              </div>
-            ))}
-          </div>
         </div>
 
         <h1 className="vs">VS</h1>
@@ -52,17 +50,10 @@ function Homepage() {
             className="competitor-image"
           />
           <h2 className="competitor-name">Dominic Meddick</h2>
-          <div className="carousel">
-            {user2.books.map((book) => (
-              <div key={book._id} className="carousel-item">
-                <img src={book.bookImageUrl} alt={book.title} />
-                <p>{book.title}</p>
-                <p>{book.author}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
+
+      <Leaderboard users={users} />
     </div>
   );
 }
