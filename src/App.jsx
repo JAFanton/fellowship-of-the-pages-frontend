@@ -5,6 +5,7 @@ import AboutUs from "./pages/about/About";
 import Login from "./components/login/Login";
 import Navbar from "./components/navBar/navBar";
 import NotFound from "./pages/notFound/notFound";
+import Signup from "./components/signup/signup";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/login" element={<Login />} /> {/* Login route */}
+          <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
