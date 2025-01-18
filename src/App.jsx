@@ -1,9 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-import Homepage from './pages/homepage/Homepage';
-import AboutUs from './pages/about/About';
-import Navbar from './components/navBar/navBar';
-import NotFound from './pages/notFound/notFound';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Homepage from "./pages/homepage/Homepage";
+import AboutUs from "./pages/about/About";
+import Login from "./components/login/Login";
+import Navbar from "./components/navBar/navBar";
+import NotFound from "./pages/notFound/notFound";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/login" element={<Login />} /> {/* Login route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
