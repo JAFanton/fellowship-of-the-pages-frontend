@@ -14,7 +14,11 @@ function Homepage() {
     // Fetch users and their books from the backend
     axios
       .get("/api/auth/users")
-      .then((response) => setUsers(response.data))
+      .then((response) => {
+        // Ensure the data is an array before setting it
+        const fetchedUsers = Array.isArray(response.data) ? response.data : [];
+        setUsers(fetchedUsers);
+      })
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
