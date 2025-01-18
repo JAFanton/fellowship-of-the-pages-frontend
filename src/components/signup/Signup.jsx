@@ -24,7 +24,7 @@ const Signup = () => {
     setSuccess(false);
 
     try {
-      const response = await axios.post("/api/auth/signup", formData);
+      const response = await axios.post("/auth/signup", formData);
       setSuccess(true);
       setFormData({ name: "", email: "", password: "" }); // Clear form on success
       console.log("User created:", response.data);
