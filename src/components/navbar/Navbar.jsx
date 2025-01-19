@@ -10,8 +10,8 @@ const Navbar = () => {
     // Check if two users already exist
     const checkUserCount = async () => {
       try {
-        const response = await axios.get("/api/auth/user-count"); // Example API endpoint
-        setHideSignup(response.data.userCount >= 2); // Adjust based on backend logic
+        const response = await axios.get("/api/auth/user-count");
+        setHideSignup(response.data.userCount >= 2);
       } catch (err) {
         console.error("Error checking user count:", err);
       }
@@ -23,9 +23,9 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo-container">
-        <Link to="/" className="logo-link">
-          <h1 className="logo">Fellowship of the Pages</h1>
-        </Link>
+      <Link to="/" className="navbar-title">
+    Fellowship of the Pages
+  </Link>
       </div>
       <div className="button-container">
         <Link to="/about" className="nav-button">
