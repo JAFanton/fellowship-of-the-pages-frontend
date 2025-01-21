@@ -7,7 +7,6 @@ const Leaderboard = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Fetch users from the backend
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem("authToken");
@@ -15,8 +14,8 @@ const Leaderboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        // If the response is empty, keep the users as an empty array
-        setUsers(response.data || []);
+        // Check if response data is valid and set users or keep empty array
+        setUsers(Array.isArray(response.data) ? response.data : []);
       } catch (err) {
         console.error("Error fetching users:", err);
         setError("Failed to load leaderboard. Please try again later.");
@@ -49,9 +48,13 @@ const Leaderboard = () => {
               .map((user, index) => (
                 <tr key={user._id}>
                   <td>{index + 1}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{new Date(user.createdAt).toLocaleDateString()}</td>
+                  <td>{user.name || "Unknown"}</td>
+                  <td>{user.email || "N/A"}</td>
+                  <td>
+                    {user.createdAt
+                      ? new Date(user.createdAt).toLocaleDateString()
+                      : "Unknown"}
+                  </td>
                 </tr>
               ))}
           </tbody>
