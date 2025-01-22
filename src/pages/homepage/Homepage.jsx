@@ -3,7 +3,7 @@ import axios from "axios";
 import "./homepage.css";
 
 // Components
-import CountdownTimer from "../../components/CountdownTimer";
+import CountdownTimer from "../../components/countdownTimer/CountdownTimer";
 import Leaderboard from "../../components/leaderBoard/LeaderBoard";
 
 function Homepage() {
