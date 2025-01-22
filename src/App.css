@@ -1,3 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('./src/assets/images/middle_earth_map.jpg'); /* Adjust path if hosted online */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Bilbo Swash Caps', cursive; /* Ensure font style matches your theme */
+  color: rgb(50, 84, 196); /* Adjust text color for readability */
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
