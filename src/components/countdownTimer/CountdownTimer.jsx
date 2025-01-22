@@ -37,7 +37,7 @@ const CountdownTimer = () => {
 
   return (
     <div className="timer-container">
-      <h1 className="timer-title">Let the Reading Begin</h1>
+      <h1 className="timer-title">Time remaining ⬇️</h1>
       <div className="timer-display">
         {`${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
       </div>
