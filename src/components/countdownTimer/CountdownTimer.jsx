@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import "./countdownTimer.css";
+
+
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -9,7 +12,7 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    const targetDate = new Date("2026-01-05T00:00:00"); // January 5th, 2026, at midnight
+    const targetDate = new Date("2026-01-05T00:00:00");
     const updateTimer = () => {
       const now = new Date();
       const timeDiff = targetDate - now;
@@ -27,15 +30,15 @@ const CountdownTimer = () => {
       setTimeLeft({ days, hours, minutes, seconds });
     };
 
-    updateTimer(); 
+    updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
     return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <div style={{ textAlign: "center", fontFamily: "Arial, sans-serif" }}>
-      <h1>Let the reading begin</h1>
-      <div style={{ fontSize: "2rem", margin: "20px 0" }}>
+    <div className="timer-container">
+      <h1 className="timer-title">Let the Reading Begin</h1>
+      <div className="timer-display">
         {`${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
       </div>
     </div>
