@@ -11,8 +11,8 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
 
-  font-family: 'Bilbo Swash Caps', cursive; /* Match font style to the homepage */
-  color: white; /* Ensure text contrasts with the gradient overlay */
+  font-family: 'Bilbo Swash Caps', cursive; 
+  color: white; 
 }
 
 .about-us-container {
@@ -22,14 +22,14 @@ body {
   line-height: 1.8;
   background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for better readability */
   border-radius: 10px;
-  color: white; /* Text color remains white for consistency */
+  color: white; 
 }
 
 .about-us-title {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 20px;
-  font-family: 'IM Fell English', serif; /* Match font style to the timer */
+  font-family: 'IM Fell English', serif; 
 }
 
 .about-us-intro {
@@ -51,7 +51,7 @@ body {
 .sub-rules {
   list-style-type: disc;
   margin-left: 20px;
-  color: #ddd; /* Lighter gray for sub-rules */
+  color: #ddd; 
 }
 
 .sub-rules li {
