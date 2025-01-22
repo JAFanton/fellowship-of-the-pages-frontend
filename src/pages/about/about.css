@@ -1,41 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  /* Background image with a gradient overlay */
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('./src/assets/images/middle_earth_map.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  font-family: 'Bilbo Swash Caps', cursive; /* Match font style to the homepage */
+  color: white; /* Ensure text contrasts with the gradient overlay */
+}
+
 .about-us-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-  }
-  
-  .about-us-title {
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .about-us-intro {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 30px;
-  }
-  
-  .rules-list {
-    list-style-type: decimal;
-    padding-left: 20px;
-    color: #333;
-  }
-  
-  .rules-list li {
-    margin-bottom: 15px;
-  }
-  
-  .sub-rules {
-    list-style-type: disc;
-    margin-left: 20px;
-    color: #666;
-  }
-  
-  .sub-rules li {
-    margin-bottom: 5px;
-  }  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.8;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for better readability */
+  border-radius: 10px;
+  color: white; /* Text color remains white for consistency */
+}
+
+.about-us-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'IM Fell English', serif; /* Match font style to the timer */
+}
+
+.about-us-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.rules-list {
+  text-align: justify;
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.rules-list li {
+  margin-bottom: 15px;
+}
+
+.sub-rules {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #ddd; /* Lighter gray for sub-rules */
+}
+
+.sub-rules li {
+  margin-bottom: 5px;
+}
