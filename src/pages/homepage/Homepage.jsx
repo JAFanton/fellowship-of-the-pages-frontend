@@ -24,8 +24,7 @@ function Homepage() {
 
   return (
     <div className="home">
-      <h1 className="title">Fellowship of the Pages</h1>
-      <p>Track your reading progress and compete with friends!</p>
+      <h1 className="title">Let the reading begin!</h1>
 
       {/* Display the countdown timer at all times */}
       <CountdownTimer />
