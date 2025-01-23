@@ -4,13 +4,13 @@ import "./about.css";
 const AboutUs = () => {
   return (
     <div className="about-us-container">
-      <h1 className="about-us-title">About the Reading Challenge</h1>
-      <p className="about-us-intro">
-        Welcome to the ultimate reading competition between Justin and Dom! Here are the rules that guide our epic journey through literature:
-      </p>
+      <h1 className="about-us-title">Competition Rules</h1>
+      <h2 className="about-us-intro">
+        Here are the rules that will guide the competition:
+      </h2>
       <ol className="rules-list">
         <li>
-          1 point is given for completing both a fiction and non-fiction book. A “classic” novel can be used instead of a non-fiction book. Most points wins.
+          One point is given for completing both a fiction and non-fiction book. A “classic” novel can be used instead of a non-fiction book. Most points wins.
         </li>
         <li>
           The winner gets a fancy <em>Lord of the Rings</em> book box set from the loser.
@@ -28,7 +28,7 @@ const AboutUs = () => {
           Kindle, audiobooks, and e-books are all allowed.
         </li>
         <li>
-          A summary of 2-4 sentences must be posted on the website as proof that the book has been finished.
+          A log of each book read must be posted on the website as proof that the book has been finished. This will also include a 2 - 4 sentence summary of the book.
         </li>
         <li>
           The competition starts and finishes on the 5th of January.
@@ -37,7 +37,7 @@ const AboutUs = () => {
           Each player receives a handicap for this challenge:
           <ul className="sub-rules">
             <li>Justin: No money to buy books.</li>
-            <li>Dom: Dyslexic and has the reading speed of a "retarded donkey."</li>
+            <li>Dom: Dyslexic and has the reading speed of a "retarded donkey".</li>
           </ul>
         </li>
         <li>
