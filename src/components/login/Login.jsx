@@ -22,7 +22,11 @@ const Login = () => {
       navigate("/");
     } catch (err) {
       console.error("Login failed:", err);
-      setError("Invalid email or password. Please try again.");
+      const errorMessage =
+        err.response && err.response.data && err.response.data.message
+          ? err.response.data.message
+          : "Invalid email or password. Please try again.";
+      setError(errorMessage);
     }
   };
 
