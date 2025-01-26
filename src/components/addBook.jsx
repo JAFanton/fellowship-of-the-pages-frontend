@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import axiosInstance from '../api/axios';
+
 const AddBookForm = ({ token }) => {
   const [formData, setFormData] = useState({
     title: '',
@@ -21,32 +23,25 @@ const AddBookForm = ({ token }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        '/api/books',
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // Include the token for authentication
-          },
-        }
-      );
-
-      setSuccessMessage('Book added successfully!');
-      setErrorMessage('');
-      setFormData({
-        title: '',
-        author: '',
-        bookImageUrl: '',
-        genre: 'Fiction',
-        review: '',
+    axiosInstance
+      .post("/api/books", formData)
+      .then((response) => {
+        setSuccessMessage("Book added successfully!");
+        setErrorMessage("");
+        setFormData({
+          title: "",
+          author: "",
+          bookImageUrl: "",
+          genre: "Fiction",
+          review: "",
+        });
+      })
+      .catch((error) => {
+        const errorText =
+          error.response?.data?.error || "Failed to add the book. Please try again.";
+        setErrorMessage(errorText);
+        setSuccessMessage("");
       });
-    } catch (error) {
-      setErrorMessage(
-        error.response?.data?.error || 'Failed to add the book. Please try again.'
-      );
-      setSuccessMessage('');
-    }
   };
 
   return (
