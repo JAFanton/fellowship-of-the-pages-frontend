@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Signup.css";
 import { useNavigate } from "react-router-dom";
+
+import axiosInstance from "../../api/axios";
+import "./Signup.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -23,16 +25,18 @@ const Signup = () => {
     setError("");
     setSuccess(false);
 
-    try {
-      const response = await axios.post("/auth/signup", formData);
-      setSuccess(true);
-      setFormData({ name: "", email: "", password: "" }); // Clear form on success
-      console.log("User created:", response.data);
-    } catch (err) {
-      setError(
-        err.response?.data?.message || "An error occurred during signup."
-      );
-    }
+    axiosInstance
+      .post("/auth/signup", formData)
+      .then((response) => {
+        setSuccess(true);
+        setFormData({ name: "", email: "", password: "" }); // Clear form on success
+        console.log("User created:", response.data);
+      })
+      .catch((error) => {
+        const errorMessage =
+          error.response?.data?.message || "An error occurred during signup.";
+        setError(errorMessage);
+      });
   };
 
   return (
