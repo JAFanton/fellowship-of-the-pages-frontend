@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import axiosInstance from "../../api/axios";
 import "./Login.css";
 
 const Login = () => {
@@ -12,22 +14,17 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post("/auth/login", { email, password });
-
-      // Save the JWT token in localStorage
-      localStorage.setItem("authToken", response.data.authToken);
-
-      // Navigate to the homepage after successful login
-      navigate("/");
-    } catch (err) {
-      console.error("Login failed:", err);
-      const errorMessage =
-        err.response && err.response.data && err.response.data.message
-          ? err.response.data.message
-          : "Invalid email or password. Please try again.";
-      setError(errorMessage);
-    }
+    axiosInstance
+      .post("/auth/login", { email, password })
+      .then((response) => {
+        localStorage.setItem("authToken", response.data.authToken);
+        navigate("/"); // Navigate to the homepage after successful login
+      })
+      .catch((error) => {
+        const errorMessage =
+          error.response?.data?.message || "Invalid email or password. Please try again.";
+        setError(errorMessage);
+      });
   };
 
   return (
