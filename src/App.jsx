@@ -3,7 +3,7 @@ import "./App.css";
 import Homepage from "./pages/homepage/Homepage";
 import AboutUs from "./pages/about/About";
 import Login from "./components/login/Login";
-import Navbar from "./components/navBar/navBar";
+import Navbar from "./components/navbar/Navbar";
 import NotFound from "./pages/notFound/notFound";
 import Signup from "./components/signup/signup";
 
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/login" element={<Login />} /> {/* Login route */}
+          <Route path="/login" element={<Login />} /> 
           <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
