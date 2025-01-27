@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import axiosInstance from "../../api/axios";
+import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
 
 const Login = () => {
@@ -10,20 +9,22 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { logInUser } = useContext(AuthContext); 
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
+    const requestBody = { email, password };
     axiosInstance
-      .post("/auth/login", { email, password })
+      .post("/auth/login", requestBody)
       .then((response) => {
-        localStorage.setItem("authToken", response.data.authToken);
-        navigate("/"); // Navigate to the homepage after successful login
+        logInUser(response.data.authToken); 
+        navigate("/"); 
       })
       .catch((error) => {
-        const errorMessage =
-          error.response?.data?.message || "Invalid email or password. Please try again.";
-        setError(errorMessage);
+        const errorDescription =
+          error.response?.data?.message || "Invalid email or password.";
+        setError(errorDescription);
       });
   };
 
