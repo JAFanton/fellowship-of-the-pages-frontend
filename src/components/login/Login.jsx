@@ -13,12 +13,25 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
+  
     const requestBody = { email, password };
     axiosInstance
       .post("/auth/login", requestBody)
       .then((response) => {
-        logInUser(response.data.authToken); 
+        const { authToken } = response.data; 
+        localStorage.setItem("authToken", authToken); // Store authToken
+  
+       
+        const decodedToken = JSON.parse(atob(authToken.split(".")[1])); 
+        const userId = decodedToken._id; 
+        
+        if (userId) {
+          localStorage.setItem("userId", userId);
+        } else {
+          console.error("userId not found in the token payload.");
+        }
+  
+        logInUser(authToken); 
         navigate("/"); 
       })
       .catch((error) => {
