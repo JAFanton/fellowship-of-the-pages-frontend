@@ -1,0 +1,90 @@
+.book-details-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+  }
+  
+  .book-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.486);
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: 3px solid rgb(0, 0, 0);
+  }
+  
+  .book-image img {
+    width: 20rem;
+    margin: 2rem;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 10px;
+  }
+  
+  .book-text {
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.486);
+    border-radius: 10px;
+    color: white;
+  }
+  
+  .book-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .book-text h3 {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+  }
+  
+  #back-button {
+    width: 12rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  #back-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .edit-button,
+  .delete-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .edit-button {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .edit-button:hover {
+    background-color: #218838;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
