@@ -9,12 +9,12 @@ const AddBookForm = () => {
     bookImageUrl: "",
     genre: "Fiction",
     review: "",
-    wordCount: 0, // Ensure this is included as part of the form data
+    wordCount: 0,
   });
 
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [showModal, setShowModal] = useState(true); // Controls modal visibility
+  const [showModal, setShowModal] = useState(true);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +37,7 @@ const AddBookForm = () => {
           review: "",
           wordCount: 0,
         });
-        setShowModal(false); // Close the modal after successful submission
+        setShowModal(false); 
       })
       .catch((error) => {
         const errorText =
@@ -48,10 +48,10 @@ const AddBookForm = () => {
   };
 
   const handleClose = () => {
-    setShowModal(false); // Close the modal when the user clicks the close button
+    setShowModal(false); 
   };
 
-  if (!showModal) return null; // If modal is closed, don't render anything
+  if (!showModal) return null; 
 
   return (
     <div className="add-book-modal-overlay">
