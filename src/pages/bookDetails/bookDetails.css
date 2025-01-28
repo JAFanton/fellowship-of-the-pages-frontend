@@ -10,7 +10,6 @@
     flex-direction: row;
     align-items: flex-start;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.486);
     margin-bottom: 2rem;
     padding: 2rem;
     border: 3px solid rgb(0, 0, 0);
@@ -44,7 +43,7 @@
     width: 12rem;
     margin: 1rem 0;
     padding: 0.5rem;
-    background-color: #007bff;
+    background-color: #314d87;
     color: white;
     border: none;
     border-radius: 10px;
