@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
+import axiosInstance from "../../api/axios";
 import "./Leaderboard.css";
 
 const Leaderboard = () => {
@@ -8,18 +10,16 @@ const Leaderboard = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      try {
-        const token = localStorage.getItem("authToken");
-        const response = await axios.get("/auth/users", {
-          headers: { Authorization: `Bearer ${token}` },
+      axiosInstance
+        .get("/auth/users")
+        .then((response) => {
+          console.log("API Response:", response.data); // Debugging line
+          setUsers(Array.isArray(response.data) ? response.data : []);
+        })
+        .catch((err) => {
+          console.error("Error fetching users:", err);
+          setError("Failed to load leaderboard. Please try again later.");
         });
-
-        // Check if response data is valid and set users or keep empty array
-        setUsers(Array.isArray(response.data) ? response.data : []);
-      } catch (err) {
-        console.error("Error fetching users:", err);
-        setError("Failed to load leaderboard. Please try again later.");
-      }
     };
 
     fetchUsers();
@@ -36,25 +36,19 @@ const Leaderboard = () => {
         <table>
           <thead>
             <tr>
-              <th>Rank</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Joined At</th>
+              <th>Points</th>
             </tr>
           </thead>
           <tbody>
             {users
-              .sort((a, b) => a.name.localeCompare(b.name)) // Example: sort alphabetically by name
+              .sort((a, b) => b.points - a.points) // Sort by points (highest first)
               .map((user, index) => (
                 <tr key={user._id}>
-                  <td>{index + 1}</td>
                   <td>{user.name || "Unknown"}</td>
                   <td>{user.email || "N/A"}</td>
-                  <td>
-                    {user.createdAt
-                      ? new Date(user.createdAt).toLocaleDateString()
-                      : "Unknown"}
-                  </td>
+                  <td>{user.points !== undefined ? user.points : "0"}</td>
                 </tr>
               ))}
           </tbody>
