@@ -1,19 +1,38 @@
 .leaderboard {
-    margin: 20px auto;
-    max-width: 800px;
-    text-align: center;
-  }
-  
-  .leaderboard table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .leaderboard th, .leaderboard td {
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .leaderboard th {
-    background-color: #f4f4f4;
-  }  
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6); 
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+  color: #f4e4ba; 
+  font-family: "Cinzel", serif; 
+}
+
+.leaderboard table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(36, 24, 9, 0.8); 
+}
+
+.leaderboard th, .leaderboard td {
+  border: 1px solid #d4af37; 
+  padding: 10px;
+}
+
+.leaderboard th {
+  background-color: #8b5a2b;
+  color: #f4e4ba;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.leaderboard tr:nth-child(odd) {
+  background-color: rgba(245, 222, 179, 0.2);
+}
+
+.leaderboard tr:hover {
+  background-color: rgba(212, 175, 55, 0.3); /* Golden glow effect */
+  transition: 0.3s;
+}
