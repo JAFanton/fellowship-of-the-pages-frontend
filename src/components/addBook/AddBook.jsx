@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axiosInstance from "../../api/axios";
 import "./addBook.css";
 
-const AddBookForm = () => {
+const AddBookForm = ({ onBookAdded }) => {
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -21,7 +21,7 @@ const AddBookForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     axiosInstance
@@ -37,21 +37,27 @@ const AddBookForm = () => {
           review: "",
           wordCount: 0,
         });
-        setShowModal(false); 
+
+        if (onBookAdded) {
+          onBookAdded(response.data);
+        }
+
+        setShowModal(false);
       })
       .catch((error) => {
         const errorText =
-          error.response?.data?.error || "Failed to add the book. Please try again.";
+          error.response?.data?.error ||
+          "Failed to add the book. Please try again.";
         setErrorMessage(errorText);
         setSuccessMessage("");
       });
   };
 
   const handleClose = () => {
-    setShowModal(false); 
+    setShowModal(false);
   };
 
-  if (!showModal) return null; 
+  if (!showModal) return null;
 
   return (
     <div className="add-book-modal-overlay">
