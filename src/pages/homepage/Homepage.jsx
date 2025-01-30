@@ -45,11 +45,13 @@ function Homepage() {
   }, []);
 
   // Function to update books in real-time when a new book is added
+  // Currently experiencing issue where carousel is not updating after a book is added
   const addBook = (newBook, userId) => {
-    setBooksByUser((prevBooks) => ({
-      ...prevBooks,
-      [userId]: [...(prevBooks[userId] || []), newBook], // Append the new book to the user's books
-    }));
+    setBooksByUser((prevBooks) => {
+      const updatedBooks = [...(prevBooks[userId] || []), newBook];
+      console.log('Updated books for user:', updatedBooks);
+      return { ...prevBooks, [userId]: updatedBooks }; 
+    });
   };
 
   const toggleAddBookForm = () => {
@@ -59,8 +61,7 @@ function Homepage() {
   return (
     <div className="home">
       <h1 className="title">Let the reading begin!</h1>
-
-      {/* Display the countdown timer at all times */}
+      
       <CountdownTimer />
 
       {/* Conditional rendering for competitors */}
@@ -87,7 +88,9 @@ function Homepage() {
           })}
         </div>
       ) : (
-        <p>No users available yet. Invite your friends to join the competition!</p>
+        <p>
+          No users available yet. Invite your friends to join the competition!
+        </p>
       )}
 
       {/* Display the leaderboard regardless of the users */}
