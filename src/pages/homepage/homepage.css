@@ -1,3 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  /* Background image with a gradient overlay */
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('./src/assets/images/middle_earth_map.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  font-family: 'Bilbo Swash Caps', cursive; 
+  color: white; 
+}
+
 .home {
     text-align: center;
     font-family: "Cinzel", serif;
