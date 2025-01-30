@@ -1,57 +1,47 @@
-body {
-  margin: 0;
-  padding: 0;
-
-  /* Background image with a gradient overlay */
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-    url('./src/assets/images/middle_earth_map.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-
-  font-family: 'Bilbo Swash Caps', cursive; 
-  color: white; 
-}
-
 .about-us-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 850px;
+  margin: 80px auto 20px; 
+  padding: 25px;
   line-height: 1.8;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for better readability */
-  border-radius: 10px;
-  color: white; 
+  background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+  border-radius: 12px;
+  border: 2px solid #d4af37; /* Golden border */
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); /* Gold shadow */
 }
 
 .about-us-title {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-family: 'IM Fell English', serif; 
+  font-size: 2.7rem;
+  margin-bottom: 25px;
+  font-family: 'Cinzel', serif; /* Elegant font */
+  color: #d4af37; /* Gold text */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Darker shadow */
 }
 
 .about-us-intro {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 30px;
+  font-style: italic;
+  color: #f1f1f1; /* Light text for contrast */
 }
 
 .rules-list {
   text-align: justify;
   list-style-type: decimal;
-  padding-left: 20px;
+  padding-left: 25px;
+  color: #f1f1f1;
 }
 
 .rules-list li {
   margin-bottom: 15px;
+  font-size: 1.1rem;
 }
 
 .sub-rules {
   list-style-type: disc;
-  margin-left: 20px;
-  color: #ddd; 
+  margin-left: 25px;
+  color: #b9c9f2; /* Light bluish-gray */
 }
 
 .sub-rules li {
