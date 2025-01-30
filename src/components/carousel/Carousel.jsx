@@ -33,9 +33,12 @@ const Carousel = ({ books }) => {
     <div className="carousel-container">
       <div className="carousel" ref={carouselRef}>
         <div className="carousel__list">
-          {books.map((book, index) => (
-            <div key={index} className="carousel__item">
-              <Link to={`/book-details/${book._id}`} className="carousel-item-link">
+          {books.map((book) => (
+            <div key={book._id} className="carousel__item">
+              <Link
+                to={`/book-details/${book._id}`}
+                className="carousel-item-link"
+              >
                 <img
                   src={book.bookImageUrl || "default-book.jpg"}
                   alt={book.title}
