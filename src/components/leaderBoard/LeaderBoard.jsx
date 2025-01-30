@@ -42,7 +42,7 @@ const Leaderboard = () => {
           </thead>
           <tbody>
             {users
-              .sort((a, b) => b.points - a.points) // Sort by points (highest first)
+              .sort((a, b) => b.points - a.points)
               .map((user, index) => (
                 <tr key={user._id}>
                   <td>{user.name || "Unknown"}</td>
