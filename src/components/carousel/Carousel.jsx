@@ -30,20 +30,22 @@ const Carousel = ({ books }) => {
   }, []);
 
   return books && books.length > 0 ? (
-    <div className="carousel" ref={carouselRef}>
-      <div className="carousel__list">
-        {books.map((book, index) => (
-          <div key={index} className="carousel__item">
-            <Link to={`/book-details/${book._id}`} className="carousel-item-link">
-              <img
-                src={book.bookImageUrl || "default-book.jpg"}
-                alt={book.title}
-                className="carousel-image"
-              />
-              <span className="carousel-item-title">{book.title}</span>
-            </Link>
-          </div>
-        ))}
+    <div className="carousel-container">
+      <div className="carousel" ref={carouselRef}>
+        <div className="carousel__list">
+          {books.map((book, index) => (
+            <div key={index} className="carousel__item">
+              <Link to={`/book-details/${book._id}`} className="carousel-item-link">
+                <img
+                  src={book.bookImageUrl || "default-book.jpg"}
+                  alt={book.title}
+                  className="carousel-image"
+                />
+                <span className="carousel-item-title">{book.title}</span>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   ) : (
