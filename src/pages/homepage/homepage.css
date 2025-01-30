@@ -1,15 +1,29 @@
 .home {
-  text-align: center;
-  padding: 20px;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    background: rgba(0, 0, 0, 0.6);
+    color: #f4e4ba;
+    max-width: 1200px; 
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 40px;
+    border: 3px solid #d4af37; 
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(212, 175, 55, 0.4);
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+  border-bottom: 2px solid #d4af37;
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
 .competitors {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 50px;
@@ -21,6 +35,11 @@
   flex-direction: column;
   align-items: center;
   width: 300px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(212, 175, 55, 0.4);
 }
 
 .competitor-image {
@@ -28,6 +47,7 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  border: 3px solid #d4af37;
   margin-bottom: 10px;
 }
 
@@ -35,34 +55,44 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 15px;
+  color: #d4af37;
 }
 
-.carousel {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 300px;
+.add-book-button {
+  background: linear-gradient(90deg, #8b4513, #d4af37);
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin-top: 20px;
 }
 
-.carousel-item {
-  flex: 0 0 auto;
-  text-align: center;
-}
-
-.carousel-item img {
-  width: 80px;
-  height: 120px;
-  object-fit: cover;
-  margin-bottom: 5px;
+.add-book-button:hover {
+  background: linear-gradient(90deg, #d4af37, #8b4513);
+  box-shadow: 0px 4px 10px rgba(212, 175, 55, 0.6);
 }
 
 .vs {
   font-size: 3rem;
-  color: #ff4500;
+  color: #d4af37;
   font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .competitors {
+      flex-direction: column;
+      gap: 30px;
+  }
+
+  .title {
+      font-size: 2rem;
+  }
+
+  .add-book-button {
+      font-size: 1rem;
+  }
 }
