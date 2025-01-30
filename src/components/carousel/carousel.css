@@ -1,8 +1,14 @@
+.carousel-container {
+  max-width: 20rem; 
+  overflow: hidden;
+  margin: 0 auto;
+}
+
 .carousel {
   display: flex;
   justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.6); 
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
   color: #f4e4ba;
@@ -14,8 +20,9 @@
   gap: 15px;
   overflow-x: auto;
   padding: 10px;
-  max-width: 1200px;
-  scrollbar-width: none; 
+  max-width: 100%;
+  box-sizing: border-box;
+  scrollbar-width: none;
 }
 
 .carousel__list::-webkit-scrollbar {
@@ -32,7 +39,7 @@
 
 .carousel__item:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6); 
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
 }
 
 .carousel-image {
@@ -57,17 +64,16 @@
   color: inherit;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .carousel-image {
-      width: 120px;
-      height: 180px;
+    width: 120px;
+    height: 180px;
   }
 }
 
 @media (max-width: 460px) {
   .carousel__list {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 }
