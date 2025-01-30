@@ -37,7 +37,6 @@ const Leaderboard = () => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Email</th>
               <th>Points</th>
             </tr>
           </thead>
@@ -47,7 +46,6 @@ const Leaderboard = () => {
               .map((user, index) => (
                 <tr key={user._id}>
                   <td>{user.name || "Unknown"}</td>
-                  <td>{user.email || "N/A"}</td>
                   <td>{user.points !== undefined ? user.points : "0"}</td>
                 </tr>
               ))}
