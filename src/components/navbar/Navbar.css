@@ -36,11 +36,13 @@
 
 .nav-button {
   background: linear-gradient(90deg, #8b4513, #d4af37);
+  height: auto;
   color: white;
   border: none;
   border-radius: 10px;
   padding: 10px 15px;
   margin: 0 10px;
+  font-family: 'Cinzel', serif;;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -48,7 +50,6 @@
 }
 
 .nav-button:hover {
-  transform: scale(1.1);
   color: #d4af37;
   background: linear-gradient(90deg, #d4af37, #8b4513);
 }
