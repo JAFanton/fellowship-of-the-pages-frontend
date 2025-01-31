@@ -3,19 +3,19 @@
   margin: 80px auto 20px; 
   padding: 25px;
   line-height: 1.8;
-  background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+  background: rgba(0, 0, 0, 0.6); 
   border-radius: 12px;
-  border: 2px solid #d4af37; /* Golden border */
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); /* Gold shadow */
+  border: 2px solid #d4af37; 
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); 
 }
 
 .about-us-title {
   text-align: center;
   font-size: 2.7rem;
   margin-bottom: 25px;
-  font-family: 'Cinzel', serif; /* Elegant font */
-  color: #d4af37; /* Gold text */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  font-family: 'Cinzel', serif; 
+  color: #d4af37; 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
 }
 
 .about-us-intro {
@@ -23,7 +23,7 @@
   font-size: 1.3rem;
   margin-bottom: 30px;
   font-style: italic;
-  color: #f1f1f1; /* Light text for contrast */
+  color: #f1f1f1; 
 }
 
 .rules-list {
@@ -41,7 +41,7 @@
 .sub-rules {
   list-style-type: disc;
   margin-left: 25px;
-  color: #b9c9f2; /* Light bluish-gray */
+  color: #b9c9f2; 
 }
 
 .sub-rules li {
