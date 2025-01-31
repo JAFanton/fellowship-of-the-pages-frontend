@@ -7,7 +7,7 @@ import CountdownTimer from "../../components/countdownTimer/CountdownTimer";
 import Leaderboard from "../../components/leaderBoard/LeaderBoard";
 import AddBookForm from "../../components/addBook/AddBook";
 import { AuthContext } from "../../context/AuthContext";
-import Carousel from "../../components/carousel/Carousel"; // Import Carousel Component
+import Carousel from "../../components/carousel/Carousel";
 
 function Homepage() {
   const [users, setUsers] = useState([]);
@@ -49,8 +49,8 @@ function Homepage() {
   const addBook = (newBook, userId) => {
     setBooksByUser((prevBooks) => {
       const updatedBooks = [...(prevBooks[userId] || []), newBook];
-      console.log('Updated books for user:', updatedBooks);
-      return { ...prevBooks, [userId]: updatedBooks }; 
+      console.log("Updated books for user:", updatedBooks);
+      return { ...prevBooks, [userId]: updatedBooks };
     });
   };
 
@@ -60,9 +60,44 @@ function Homepage() {
 
   return (
     <div className="home">
-      <h1 className="title">Let the reading begin!</h1>
-      
+      <h1>Welcome to the Fellowship of the Pages!</h1>
+      <p className="intro-text">
+        I built this website as a way to gain more experience in web
+        development. It serves as a way for my friend and I to track our reading
+        competition to see who can read the most books over the year. The rules
+        for the competition can be found in the navbar above. Right now, only
+        the two of us can log in and add books, but if you're curious about how
+        the site works, feel free to check out the repositories listed below, or
+        to clone the repositories and stage your own reading competition with
+        your friend!
+        <br />
+        <br />
+        <a
+          href="https://github.com/JAFanton/fellowship-of-the-pages-frontend/tree/main"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Frontend Repository
+        </a>{" "}
+        |
+        <a
+          className="backend-link"
+          href="https://github.com/JAFanton/fellowship-of-the-pages-backend/tree/main"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Backend Repository
+        </a>
+      </p>
+
+      <h2 className="title">Let the reading begin!</h2>
+
       <CountdownTimer />
+
+      {/* Display the leaderboard regardless of the users */}
+      <div className="leaderBoard">
+        <Leaderboard users={users} />
+      </div>
 
       {/* Conditional rendering for competitors */}
       {loading ? (
@@ -92,9 +127,6 @@ function Homepage() {
           No users available yet. Invite your friends to join the competition!
         </p>
       )}
-
-      {/* Display the leaderboard regardless of the users */}
-      <Leaderboard users={users} />
 
       {/* Add Book Button (only visible if logged in) */}
       {isLoggedIn && (
