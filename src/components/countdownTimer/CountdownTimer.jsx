@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import "./countdownTimer.css";
 
-
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -37,9 +36,24 @@ const CountdownTimer = () => {
 
   return (
     <div className="timer-container">
-      <h1 className="timer-title">Time remaining ⬇️</h1>
-      <div className="timer-display">
-        {`${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
+      <h1 className="timer-title">Time remaining</h1>
+      <div className="timer-blocks">
+        <div className="time-block">
+          <div className="time-value">{timeLeft.days}</div>
+          <div className="time-label">Days</div>
+        </div>
+        <div className="time-block">
+          <div className="time-value">{timeLeft.hours}</div>
+          <div className="time-label">Hours</div>
+        </div>
+        <div className="time-block">
+          <div className="time-value">{timeLeft.minutes}</div>
+          <div className="time-label">Minutes</div>
+        </div>
+        <div className="time-block">
+          <div className="time-value">{timeLeft.seconds}</div>
+          <div className="time-label">Seconds</div>
+        </div>
       </div>
     </div>
   );
