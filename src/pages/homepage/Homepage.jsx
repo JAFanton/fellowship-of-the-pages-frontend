@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import axiosInstance from "../../api/axios";
+import { useState, useContext } from "react";
 import "./homepage.css";
 
 // Components
@@ -9,50 +8,9 @@ import AddBookForm from "../../components/addBook/AddBook";
 import { AuthContext } from "../../context/AuthContext";
 import Carousel from "../../components/carousel/Carousel";
 
-function Homepage() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [booksByUser, setBooksByUser] = useState({});
+function Homepage({ users, booksByUser, addBook, loading }) {
   const [showAddBookForm, setShowAddBookForm] = useState(false);
-
   const { isLoggedIn } = useContext(AuthContext);
-
-  useEffect(() => {
-    // Fetch users and their books
-    axiosInstance
-      .get("/auth/users")
-      .then((response) => {
-        const fetchedUsers = Array.isArray(response.data) ? response.data : [];
-        setUsers(fetchedUsers);
-
-        // Fetch books for each user after users are fetched
-        fetchedUsers.forEach((user) => {
-          axiosInstance
-            .get(`/api/books/user/${user._id}`)
-            .then((bookResponse) => {
-              setBooksByUser((prevBooks) => ({
-                ...prevBooks,
-                [user._id]: bookResponse.data, // Store books by user ID
-              }));
-            })
-            .catch((error) =>
-              console.error("Error fetching books for user:", error)
-            );
-        });
-      })
-      .catch((error) => console.error("Error fetching users:", error))
-      .finally(() => setLoading(false));
-  }, []);
-
-  // Function to update books in real-time when a new book is added
-  // Currently experiencing issue where carousel is not updating after a book is added
-  const addBook = (newBook, userId) => {
-    setBooksByUser((prevBooks) => {
-      const updatedBooks = [...(prevBooks[userId] || []), newBook];
-      console.log("Updated books for user:", updatedBooks);
-      return { ...prevBooks, [userId]: updatedBooks };
-    });
-  };
 
   const toggleAddBookForm = () => {
     setShowAddBookForm((prevState) => !prevState);
@@ -93,12 +51,10 @@ function Homepage() {
 
       <CountdownTimer />
 
-      {/* Display the leaderboard regardless of the users */}
       <div className="leaderBoard">
         <Leaderboard users={users} />
       </div>
 
-      {/* Conditional rendering for competitors */}
       {loading ? (
         <p>Loading user data...</p>
       ) : users.length >= 2 ? (
@@ -114,8 +70,7 @@ function Homepage() {
                     alt={user.name}
                     className="competitor-image"
                   />
-                  {/* Use the Carousel component to display the books for the user */}
-                  <Carousel books={userBooks} />
+                  <Carousel books={userBooks} key={userBooks.length} />
                 </div>
               </div>
             );
@@ -127,14 +82,12 @@ function Homepage() {
         </p>
       )}
 
-      {/* Add Book Button (only visible if logged in) */}
       {isLoggedIn && (
         <button className="add-book-button" onClick={toggleAddBookForm}>
           Add a Book
         </button>
       )}
 
-      {/* Show Add Book Form and pass addBook function */}
       {showAddBookForm && <AddBookForm onBookAdded={addBook} />}
     </div>
   );
