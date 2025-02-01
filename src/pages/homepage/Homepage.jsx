@@ -62,14 +62,13 @@ function Homepage() {
     <div className="home">
       <h1>Welcome to the Fellowship of the Pages!</h1>
       <p className="intro-text">
-        I built this website as a way to gain more experience in web
-        development. It serves as a way for my friend and I to track our reading
-        competition to see who can read the most books over the year. The rules
-        for the competition can be found in the navbar above. Right now, only
-        the two of us can log in and add books, but if you're curious about how
-        the site works, feel free to check out the repositories listed below, or
-        to clone the repositories and stage your own reading competition with
-        your friend!
+        I built this website to gain more experience in web development. It
+        allows my friend and me to track our reading competition and see who can
+        read the most books over the year. The competition rules can be found in
+        the navbar above. Right now, only the two of us can log in and add
+        books, but if you're curious about how the site works, feel free to
+        check out the repositories below—or clone them and start your own
+        reading competition with a friend!
         <br />
         <br />
         <a
