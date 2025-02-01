@@ -13,7 +13,6 @@ const Leaderboard = () => {
       axiosInstance
         .get("/auth/users")
         .then((response) => {
-          console.log("API Response:", response.data); // Debugging line
           setUsers(Array.isArray(response.data) ? response.data : []);
         })
         .catch((err) => {
