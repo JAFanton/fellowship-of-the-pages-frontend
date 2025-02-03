@@ -51,34 +51,39 @@ const BookDetailsPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     axiosInstance
       .put(`/api/books/${bookId}`, formData)
       .then((response) => {
+        console.log("Update response:", response);
         alert("Book updated successfully");
-        setBook(response.data.data); // Update the book state with the new data
-        setShowEditModal(false); // Close the modal after updating
+        setBook(response.data); 
+        setShowEditModal(false);
       })
       .catch((err) => {
-        console.error("Error updating book:", err);
-        alert("Failed to update book. Please try again.");
+        console.error("Error updating book:", err.response ? err.response.data : err.message);
+        alert(`Failed to update book: ${err.response?.data?.message || err.message}`);
       });
   };
+  
 
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this book?")) {
       axiosInstance
         .delete(`/api/books/${bookId}`)
-        .then(() => {
+        .then((response) => {
+          console.log("Delete response:", response);
           alert("Book deleted successfully");
           navigate("/");
         })
         .catch((err) => {
-          console.error("Error deleting book:", err);
-          alert("Failed to delete book. Please try again.");
+          console.error("Error deleting book:", err.response ? err.response.data : err.message);
+          alert(`Failed to delete book: ${err.response?.data?.message || err.message}`);
         });
     }
   };
+  
+  
 
   const isOwner = book?.userId && book.userId === loggedInUserId;
 
