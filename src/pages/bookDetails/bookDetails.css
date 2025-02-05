@@ -13,29 +13,29 @@
   margin-top: 5rem;
   margin-bottom: 2rem;
   padding: 2rem;
-  border: 3px solid #d4af37; /* Gold border for Middle-earth feel */
-  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+  border: 3px solid #d4af37; 
+  background-color: rgba(0, 0, 0, 0.7); 
 }
 
 .book-image img {
   width: 20rem;
   margin: 2rem;
-  border: 3px solid #d4af37; /* Gold border */
+  border: 3px solid #d4af37; 
   border-radius: 10px;
 }
 
 .book-text {
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.6); /* Dark background for readability */
+  background-color: rgba(0, 0, 0, 0.6); 
   border-radius: 10px;
-  color: #f1f1f1; /* Light text */
+  color: #f1f1f1; 
 }
 
 .book-text h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   font-family: 'Cinzel', serif;
-  color: #d4af37; /* Gold color */
+  color: #d4af37; 
 }
 
 .book-text h3 {
@@ -48,7 +48,7 @@
   width: 12rem;
   margin: 1rem 0;
   padding: 0.5rem;
-  background-color: #3E6B3A; /* Deep green */
+  background-color: #3E6B3A; 
   color: white;
   border: none;
   border-radius: 10px;
@@ -56,7 +56,7 @@
 }
 
 #back-button:hover {
-  background-color: #2E4A28; /* Darker green */
+  background-color: #2E4A28; 
 }
 
 .action-buttons {
@@ -77,12 +77,12 @@
 }
 
 .edit-button {
-  background-color: #6C8A4C; /* Elvish green */
+  background-color: #6C8A4C; 
   color: white;
 }
 
 .edit-button:hover {
-  background-color: #4E6C3B; /* Darker green */
+  background-color: #4E6C3B; 
 }
 
 .delete-button {
@@ -110,7 +110,7 @@
 
 /* Modal content */
 .edit-modal {
-  background: #2F4F2F; /* Forest green */
+  background: #2F4F2F; 
   padding: 1rem;
   border-radius: 8px;
   width: 25rem;
