@@ -3,6 +3,32 @@ import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../api/axios";
 import "./bookDetails.css";
 
+const PopupAlert = ({ message, onClose, onConfirm }) => {
+  if (!message) return null;
+
+  return (
+    <div className="popup-overlay">
+      <div className="popup-box">
+        <p>{message}</p>
+        {onConfirm ? (
+          <div>
+            <button onClick={onConfirm} className="popup-button">
+              Yes
+            </button>
+            <button onClick={onClose} className="popup-button">
+              No
+            </button>
+          </div>
+        ) : (
+          <button onClick={onClose} className="popup-button">
+            OK
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const BookDetailsPage = () => {
   const { bookId } = useParams();
   const navigate = useNavigate();
@@ -17,7 +43,8 @@ const BookDetailsPage = () => {
     review: "",
     bookImageUrl: "",
   });
-  const [showEditModal, setShowEditModal] = useState(false); // State for showing modal
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [popupMessage, setPopupMessage] = useState(""); // State for in-app popup
 
   const loggedInUserId = localStorage.getItem("userId") || "";
 
@@ -39,9 +66,7 @@ const BookDetailsPage = () => {
         console.error("Error fetching book details:", err);
         setError("Failed to load book details");
       })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => setLoading(false));
   }, [bookId]);
 
   const handleInputChange = (e) => {
@@ -51,48 +76,62 @@ const BookDetailsPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
     axiosInstance
       .put(`/api/books/${bookId}`, formData)
       .then((response) => {
-        console.log("Update response:", response);
-        alert("Book updated successfully");
-        setBook(response.data); 
+        setBook(response.data);
         setShowEditModal(false);
+        setPopupMessage("Book updated successfully!");
       })
       .catch((err) => {
-        console.error("Error updating book:", err.response ? err.response.data : err.message);
-        alert(`Failed to update book: ${err.response?.data?.message || err.message}`);
+        setPopupMessage(
+          `Failed to update book: ${err.response?.data?.message || err.message}`
+        );
       });
   };
-  
+
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this book?")) {
-      axiosInstance
-        .delete(`/api/books/${bookId}`)
-        .then((response) => {
-          console.log("Delete response:", response);
-          alert("Book deleted successfully");
-          navigate("/");
-        })
-        .catch((err) => {
-          console.error("Error deleting book:", err.response ? err.response.data : err.message);
-          alert(`Failed to delete book: ${err.response?.data?.message || err.message}`);
-        });
-    }
+    setPopupMessage("Are you sure you want to delete this book?");
+    setConfirmDelete(true);
   };
-  
-  
+
+  const confirmDeleteAction = () => {
+    axiosInstance
+      .delete(`/api/books/${bookId}`)
+      .then(() => {
+        setPopupMessage("Book deleted successfully");
+        setConfirmDelete(false);
+        setTimeout(() => navigate("/"), 2000);
+      })
+      .catch((err) => {
+        setPopupMessage(
+          `Failed to delete book: ${err.response?.data?.message || err.message}`
+        );
+        setConfirmDelete(false);
+      });
+  };
 
   const isOwner = book?.userId && book.userId === loggedInUserId;
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="loading-container">Loading...</div>;
   if (error) return <p>{error}</p>;
   if (!book) return <p>Book not found.</p>;
 
   return (
     <div className="book-details-page">
+      {popupMessage && (
+        <PopupAlert
+          message={popupMessage}
+          onClose={() => {
+            setPopupMessage("");
+            setConfirmDelete(false);
+          }}
+          onConfirm={confirmDelete ? confirmDeleteAction : null}
+        />
+      )}
+
       <div className="book-content">
         <div className="book-image">
           <img src={book.bookImageUrl || "default-book.jpg"} alt={book.title} />
@@ -125,67 +164,49 @@ const BookDetailsPage = () => {
             </button>
             <h2>Edit Book Details</h2>
             <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="title">Title:</label>
-                <input
-                  type="text"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="author">Author:</label>
-                <input
-                  type="text"
-                  name="author"
-                  value={formData.author}
-                  onChange={handleInputChange}
-                  required
-                  />
-              </div>
-              <div>
-                <label htmlFor="genre">Genre:</label>
-                <select
-                  name="genre"
-                  value={formData.genre}
-                  onChange={handleInputChange}
-                  required
-                  >
-                  <option value="Fiction">Fiction</option>
-                  <option value="Non-Fiction">Non-Fiction</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="wordCount">Word Count:</label>
-                <input
-                  type="number"
-                  name="wordCount"
-                  value={formData.wordCount}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="bookImageUrl">Book Image URL:</label>
-                <input
-                  type="url"
-                  name="bookImageUrl"
-                  value={formData.bookImageUrl}
-                  onChange={handleInputChange}
-                  required
-                  />
-              </div>
-              <div>
-                <label htmlFor="review">Review:</label>
-                <textarea
-                  name="review"
-                  value={formData.review}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
+              <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="text"
+                name="author"
+                value={formData.author}
+                onChange={handleInputChange}
+                required
+              />
+              <select
+                name="genre"
+                value={formData.genre}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="Fiction">Fiction</option>
+                <option value="Non-Fiction">Non-Fiction</option>
+              </select>
+              <input
+                type="number"
+                name="wordCount"
+                value={formData.wordCount}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="url"
+                name="bookImageUrl"
+                value={formData.bookImageUrl}
+                onChange={handleInputChange}
+                required
+              />
+              <textarea
+                name="review"
+                value={formData.review}
+                onChange={handleInputChange}
+                required
+              />
               <button type="submit" className="submit-button">
                 Update Book
               </button>
@@ -193,6 +214,7 @@ const BookDetailsPage = () => {
           </div>
         </div>
       )}
+
       <button id="back-button" onClick={() => navigate("/")}>
         ← Back to Homepage
       </button>
