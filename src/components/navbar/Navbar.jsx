@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import axiosInstance from "../../api/axios";
 import { AuthContext } from "../../context/AuthContext";
 import "./Navbar.css";
 
@@ -11,20 +12,28 @@ const Navbar = () => {
 
   useEffect(() => {
     const checkUserCount = async () => {
-      try {
-        const response = await axios.get("/api/auth/user-count");
-        setHideSignup(response.data.userCount >= 2);
-      } catch (err) {
-        console.error("Error checking user count:", err);
-      }
+      axiosInstance
+        .get("/auth/users")
+        .then((response) => {
+          console.log("Full API response:", response); // Debugging
+          console.log("Users array:", response.data); // Debugging
+          console.log(
+            "User count:",
+            Array.isArray(response.data) ? response.data.length : "Not an array"
+          ); // Extra check
+          setHideSignup(
+            Array.isArray(response.data) && response.data.length >= 2
+          );
+        })
+        .catch((err) => console.error("Error checking user count:", err));
     };
 
     checkUserCount();
-  }, []);
+  }, [isLoggedIn]); // Re-run when login status changes
 
   const handleLogout = () => {
-    logOutUser(); 
-    navigate("/"); 
+    logOutUser();
+    navigate("/");
   };
 
   return (
