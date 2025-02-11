@@ -65,11 +65,6 @@ function Homepage({ users, booksByUser, addBook, loading }) {
               <div key={user._id} className="competitor">
                 <h2 className="competitor-name">{user.name}</h2>
                 <div className="competitor-carousel">
-                  <img
-                    src={user.profileImageUrl || "default-user.jpg"}
-                    alt={user.name}
-                    className="competitor-image"
-                  />
                   <Carousel books={userBooks} key={userBooks.length} />
                 </div>
               </div>
