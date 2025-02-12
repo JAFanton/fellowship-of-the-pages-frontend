@@ -14,13 +14,11 @@ const Navbar = () => {
     const checkUserCount = async () => {
       axiosInstance
         .get("/auth/users")
-        .then((response) => {
-          console.log("Full API response:", response); // Debugging
-          console.log("Users array:", response.data); // Debugging
+        .then((response) => { 
           console.log(
             "User count:",
             Array.isArray(response.data) ? response.data.length : "Not an array"
-          ); // Extra check
+          ); 
           setHideSignup(
             Array.isArray(response.data) && response.data.length >= 2
           );
@@ -29,7 +27,7 @@ const Navbar = () => {
     };
 
     checkUserCount();
-  }, [isLoggedIn]); // Re-run when login status changes
+  }, [isLoggedIn]); 
 
   const handleLogout = () => {
     logOutUser();
