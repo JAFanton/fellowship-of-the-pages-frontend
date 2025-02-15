@@ -44,7 +44,7 @@ const BookDetailsPage = () => {
     bookImageUrl: "",
   });
   const [showEditModal, setShowEditModal] = useState(false);
-  const [popupMessage, setPopupMessage] = useState(""); // State for in-app popup
+  const [popupMessage, setPopupMessage] = useState("");
 
   const loggedInUserId = localStorage.getItem("userId") || "";
 
