@@ -56,7 +56,7 @@ function Homepage({ users, booksByUser, addBook, loading }) {
       </div>
 
       {loading ? (
-        <p>Loading user data...</p>
+        <p>No participants yet!</p>
       ) : users.length >= 2 ? (
         <div className="competitors">
           {users.map((user) => {
