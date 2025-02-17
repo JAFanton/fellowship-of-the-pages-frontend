@@ -15,10 +15,6 @@ const Navbar = () => {
       axiosInstance
         .get("/auth/users")
         .then((response) => { 
-          console.log(
-            "User count:",
-            Array.isArray(response.data) ? response.data.length : "Not an array"
-          ); 
           setHideSignup(
             Array.isArray(response.data) && response.data.length >= 2
           );
