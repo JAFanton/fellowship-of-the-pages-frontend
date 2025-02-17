@@ -17,7 +17,7 @@ const Leaderboard = () => {
         })
         .catch((err) => {
           console.error("Error fetching users:", err);
-          setError("Failed to load leaderboard. Please try again later.");
+          setError("No participants yet");
         });
     };
 
