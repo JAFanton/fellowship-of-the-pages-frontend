@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import axiosInstance from "../../api/axios";
-import "./Leaderboard.css";
+import "./leaderboard.css";
 
 const Leaderboard = () => {
   const [users, setUsers] = useState([]);
