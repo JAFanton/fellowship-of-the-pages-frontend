@@ -31,14 +31,7 @@ const AboutUs = () => {
           A log of each book read must be posted on the website as proof that the book has been finished. This will also include a 2 - 4 sentence summary of the book.
         </li>
         <li>
-          The competition starts and finishes on the 5th of January.
-        </li>
-        <li>
-          Each player receives a handicap for this challenge:
-          <ul className="sub-rules">
-            <li>Justin: No money to buy books.</li>
-            <li>Dom: Dyslexic and has the reading speed of a "retarded donkey".</li>
-          </ul>
+          The competition started on the 5th of January 2025 and finishes on the 5th of January 2026.
         </li>
         <li>
           You can re-read books you’ve completed before the challenge and finish books you’ve started (within reason).
