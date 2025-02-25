@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,19 +14,21 @@
 
 /* Modal Content for AddBook Form */
 .add-book-modal {
-    background: #374151;
-    padding: 2rem;
-    border-radius: 8px;
+    background: rgba(30, 20, 10, 0.95); /* Dark, transparent background */
+    padding: 1.5rem;
+    border-radius: 12px;
     width: 30rem;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    color: white;
+    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.4); /* Soft golden shadow */
+    color: #f4e4ba; /* Lighter text color */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     overflow-y: auto;
     max-height: 90%;
+    border: 3px solid #d4af37; /* Golden border */
+    font-family: "Cinzel", serif; /* Same font style */
+    text-align: center; /* Centered content */
 }
 
 /* Close Button */
@@ -36,9 +38,14 @@
     right: 10px;
     background: none;
     border: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     cursor: pointer;
-    color: white;
+    color: #f4e4ba; /* Close button color */
+    transition: color 0.3s ease-in-out;
+}
+
+.add-book-close-button:hover {
+    color: #d4af37; /* Hover color */
 }
 
 /* Form Styling */
@@ -49,12 +56,15 @@
     gap: 1rem;
 }
 
+/* Label Styling */
 .add-book-form label {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    color: #f4e4ba; /* Label text color */
 }
 
+/* Input, Select, and Textarea Styling */
 .add-book-form input,
 .add-book-form select,
 .add-book-form textarea {
@@ -71,24 +81,26 @@
 .add-book-form select:focus,
 .add-book-form textarea:focus {
     outline: none;
-    border-color: #314d86;
-    box-shadow: 0 0 4px #314d86;
+    border-color: #d4af37; /* Focus border color */
+    box-shadow: 0 0 4px #d4af37; /* Focus glow effect */
 }
 
 /* Submit Button */
 .add-book-submit-button {
-    background-color: #314d86;
-    color: #fff;
+    background: linear-gradient(90deg, #8b4513, #d4af37); /* Gradient similar to login modal */
+    color: white;
     padding: 10px 16px;
-    border: none;
-    border-radius: 4px;
+    border: 2px solid #d4af37; /* Golden border */
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s;
+    box-shadow: 0px 4px 10px rgba(212, 175, 55, 0.4); /* Soft golden shadow */
 }
 
 .add-book-submit-button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(90deg, #d4af37, #8b4513); /* Reverse gradient on hover */
+    color: #d4af37; /* Hover color */
 }
 
 /* Error and Success Messages */
@@ -97,6 +109,7 @@
     font-size: 0.9rem;
     margin-bottom: 1rem;
     text-align: center;
+    font-style: italic;
 }
 
 .add-book-success {
@@ -104,4 +117,14 @@
     font-size: 0.9rem;
     margin-bottom: 1rem;
     text-align: center;
+}
+
+/* Scrollbar for overflow */
+.add-book-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.add-book-modal::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 4px;
 }
