@@ -61,12 +61,22 @@ function Homepage({ users, booksByUser, addBook, loading }) {
         <div className="competitors">
           {users.map((user) => {
             const userBooks = booksByUser[user._id] || [];
+
+            // Calculate total words read
+            const totalWordsRead = userBooks.reduce(
+              (total, book) => total + (book.wordCount || 0),
+              0
+            );
+
             return (
               <div key={user._id} className="competitor">
                 <h2 className="competitor-name">{user.name}</h2>
                 <div className="competitor-carousel">
                   <Carousel books={userBooks} key={userBooks.length} />
                 </div>
+                <p className="words-read">
+                  Total Words Read: <strong>{totalWordsRead.toLocaleString()}</strong>
+                </p>
               </div>
             );
           })}
