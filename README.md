@@ -26,6 +26,9 @@ Welcome to **Fellowship of the Pages**, a reading competition platform designed 
 - **Responsive Navbar**:
   - Links to the homepage, login, signup, and about us pages for easy navigation.
 
+## Live Demo
+Check out the live version of the project here: [Fellowship of the Pages](https://fellowship-of-the-pages.netlify.app/)
+
 ## Installation
 
 Follow these steps to get the project up and running:
@@ -34,5 +37,7 @@ Follow these steps to get the project up and running:
    ```bash
    git clone https://github.com/yourusername/fellowship-of-the-pages.git
    cd fellowship-of-the-pages
-2. Install npm
+2. **Install dependencies**:
+  ```bash
+  Install npm
 
