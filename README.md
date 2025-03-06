@@ -37,6 +37,7 @@ Follow these steps to get the project up and running:
    ```bash
    git clone https://github.com/yourusername/fellowship-of-the-pages.git
    cd fellowship-of-the-pages
+   
 2. **Install dependencies**:
   ```bash
   Install npm
