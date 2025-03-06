@@ -20,24 +20,21 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch users
     axiosInstance
       .get("/auth/users")
       .then((response) => {
         const fetchedUsers = Array.isArray(response.data) ? response.data : [];
         setUsers(fetchedUsers);
-
-        // Fetch books for each user
+  
         const booksData = {};
         const bookPromises = fetchedUsers.map((user) =>
-          axiosInstance
-            .get(`/api/books/user/${user._id}`)
-            .then((bookResponse) => {
-              booksData[user._id] = bookResponse.data || [];
-            })
+          axiosInstance.get(`/api/books/user/${user._id}`).then((bookResponse) => {
+            booksData[user._id] = (bookResponse.data || []).sort(
+              (a, b) => new Date(b.addedAt) - new Date(a.addedAt) // Sorting by newest first
+            );
+          })
         );
-
-        // Wait for all book requests to complete before updating state
+  
         Promise.all(bookPromises)
           .then(() => setBooksByUser(booksData))
           .finally(() => setLoading(false));
@@ -52,7 +49,7 @@ function App() {
 
     setBooksByUser((prevBooks) => {
       const userBooks = prevBooks[userId] || [];
-      const updatedBooks = [...userBooks, newBook];
+      const updatedBooks = [newBook, ...userBooks];
 
       return { ...prevBooks, [userId]: updatedBooks };
     });
