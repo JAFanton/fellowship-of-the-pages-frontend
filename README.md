@@ -32,6 +32,7 @@ Welcome to **Fellowship of the Pages**, a reading competition platform designed 
   - Links to the homepage, login, signup, and about us pages for easy navigation.
 
 
+
 ## Live Demo
 Check out the live version of the project here: [Fellowship of the Pages](https://fellowship-of-the-pages.netlify.app/)
 
