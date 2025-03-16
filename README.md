@@ -28,6 +28,7 @@ Welcome to **Fellowship of the Pages**, a reading competition platform where boo
 ## Live Demo  
 Check out the project live: [Fellowship of the Pages](https://fellowship-of-the-pages.netlify.app/)  
 
+
 ## Installation  
 
 Get the project running locally:  
