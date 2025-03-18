@@ -1,36 +1,55 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./carousel.css";
 
 const Carousel = ({ books }) => {
   const carouselRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const carouselWidth = carousel.offsetWidth;
-    const mouseX = e.clientX;
-    const scrollPosition = (mouseX / carouselWidth) * carousel.scrollWidth;
-
-    carousel.scrollLeft = scrollPosition;
-  };
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   useEffect(() => {
+    const checkScroll = () => {
+      if (carouselRef.current) {
+        setCanScrollLeft(carouselRef.current.scrollLeft > 0);
+        setCanScrollRight(
+          carouselRef.current.scrollLeft < 
+          carouselRef.current.scrollWidth - carouselRef.current.clientWidth
+        );
+      }
+    };
+
     const carousel = carouselRef.current;
     if (carousel) {
-      carousel.addEventListener("mousemove", handleMouseMove);
+      carousel.addEventListener("scroll", checkScroll);
+      checkScroll();
     }
 
     return () => {
       if (carousel) {
-        carousel.removeEventListener("mousemove", handleMouseMove);
+        carousel.removeEventListener("scroll", checkScroll);
       }
     };
   }, []);
 
+  const scroll = (direction) => {
+    if (carouselRef.current) {
+      const scrollAmount = carouselRef.current.clientWidth * 0.6;
+      carouselRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return books && books.length > 0 ? (
     <div className="carousel-container">
+      <button
+        className={`carousel-arrow left ${!canScrollLeft ? "hidden" : ""}`}
+        onClick={() => scroll("left")}
+      >
+        &#9665;
+      </button>
+
       <div className="carousel" ref={carouselRef}>
         <div className="carousel__list">
           {books.map((book) => (
@@ -50,6 +69,13 @@ const Carousel = ({ books }) => {
           ))}
         </div>
       </div>
+
+      <button
+        className={`carousel-arrow right ${!canScrollRight ? "hidden" : ""}`}
+        onClick={() => scroll("right")}
+      >
+        &#9655;
+      </button>
     </div>
   ) : (
     <p>No books added yet.</p>
